@@ -6,8 +6,12 @@ class Counter extends Component {
         tag: ['tag1', 'tag2', 'tag3']
 
     }
-    handleIncrement = () => {
+    handleIncrement = ((product) => {
+        console.log("======> :: product", product);
         this.setState({ count: this.state.count + 1 });
+    })
+    doHandleIncrement = () => {
+        this.handleIncrement({ id: 1 })
     }
     render() {
         let classes = "btn m-2"
@@ -15,7 +19,7 @@ class Counter extends Component {
         return (
             <>
                 <span className={classes}>{this.state.count}</span>
-                <button onClick={this.handleIncrement} className="btn btn-dark"> Increment </button>
+                <button onClick={() => this.handleIncrement({ id: 1 })} className="btn btn-dark"> Increment </button>
                 <ul>
                     {this.state.tag.map((Elem, index) => {
                         return <li key={index}> {Elem} </li>
